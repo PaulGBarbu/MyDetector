@@ -1,0 +1,5066 @@
+{
+    "modelTopology": {
+        "keras_version": "2.1.5",
+        "model_config": {
+            "class_name": "Model",
+            "config": {
+                "layers": [
+                    {
+                        "class_name": "InputLayer",
+                        "inbound_nodes": [],
+                        "config": {
+                            "dtype": "float32",
+                            "batch_input_shape": [
+                                null,
+                                416,
+                                416,
+                                3
+                            ],
+                            "name": "input_1",
+                            "sparse": false
+                        },
+                        "name": "input_1"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "input_1",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_1",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 16,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": false,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                3,
+                                3
+                            ]
+                        },
+                        "name": "conv2d_1"
+                    },
+                    {
+                        "class_name": "BatchNormalization",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "conv2d_1",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "beta_constraint": null,
+                            "scale": true,
+                            "moving_mean_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "center": true,
+                            "epsilon": 0.001,
+                            "trainable": true,
+                            "moving_variance_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "beta_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "gamma_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "gamma_regularizer": null,
+                            "gamma_constraint": null,
+                            "axis": -1,
+                            "beta_regularizer": null,
+                            "momentum": 0.99,
+                            "name": "batch_normalization_1"
+                        },
+                        "name": "batch_normalization_1"
+                    },
+                    {
+                        "class_name": "LeakyReLU",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "batch_normalization_1",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "alpha": 0.10000000149011612,
+                            "trainable": true,
+                            "name": "leaky_re_lu_1"
+                        },
+                        "name": "leaky_re_lu_1"
+                    },
+                    {
+                        "class_name": "MaxPooling2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "leaky_re_lu_1",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "name": "max_pooling2d_1",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "pool_size": [
+                                2,
+                                2
+                            ],
+                            "padding": "same",
+                            "strides": [
+                                2,
+                                2
+                            ]
+                        },
+                        "name": "max_pooling2d_1"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "max_pooling2d_1",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_2",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 32,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": false,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                3,
+                                3
+                            ]
+                        },
+                        "name": "conv2d_2"
+                    },
+                    {
+                        "class_name": "BatchNormalization",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "conv2d_2",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "beta_constraint": null,
+                            "scale": true,
+                            "moving_mean_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "center": true,
+                            "epsilon": 0.001,
+                            "trainable": true,
+                            "moving_variance_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "beta_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "gamma_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "gamma_regularizer": null,
+                            "gamma_constraint": null,
+                            "axis": -1,
+                            "beta_regularizer": null,
+                            "momentum": 0.99,
+                            "name": "batch_normalization_2"
+                        },
+                        "name": "batch_normalization_2"
+                    },
+                    {
+                        "class_name": "LeakyReLU",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "batch_normalization_2",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "alpha": 0.10000000149011612,
+                            "trainable": true,
+                            "name": "leaky_re_lu_2"
+                        },
+                        "name": "leaky_re_lu_2"
+                    },
+                    {
+                        "class_name": "MaxPooling2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "leaky_re_lu_2",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "name": "max_pooling2d_2",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "pool_size": [
+                                2,
+                                2
+                            ],
+                            "padding": "same",
+                            "strides": [
+                                2,
+                                2
+                            ]
+                        },
+                        "name": "max_pooling2d_2"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "max_pooling2d_2",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_3",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 64,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": false,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                3,
+                                3
+                            ]
+                        },
+                        "name": "conv2d_3"
+                    },
+                    {
+                        "class_name": "BatchNormalization",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "conv2d_3",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "beta_constraint": null,
+                            "scale": true,
+                            "moving_mean_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "center": true,
+                            "epsilon": 0.001,
+                            "trainable": true,
+                            "moving_variance_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "beta_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "gamma_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "gamma_regularizer": null,
+                            "gamma_constraint": null,
+                            "axis": -1,
+                            "beta_regularizer": null,
+                            "momentum": 0.99,
+                            "name": "batch_normalization_3"
+                        },
+                        "name": "batch_normalization_3"
+                    },
+                    {
+                        "class_name": "LeakyReLU",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "batch_normalization_3",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "alpha": 0.10000000149011612,
+                            "trainable": true,
+                            "name": "leaky_re_lu_3"
+                        },
+                        "name": "leaky_re_lu_3"
+                    },
+                    {
+                        "class_name": "MaxPooling2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "leaky_re_lu_3",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "name": "max_pooling2d_3",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "pool_size": [
+                                2,
+                                2
+                            ],
+                            "padding": "same",
+                            "strides": [
+                                2,
+                                2
+                            ]
+                        },
+                        "name": "max_pooling2d_3"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "max_pooling2d_3",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_4",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 128,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": false,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                3,
+                                3
+                            ]
+                        },
+                        "name": "conv2d_4"
+                    },
+                    {
+                        "class_name": "BatchNormalization",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "conv2d_4",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "beta_constraint": null,
+                            "scale": true,
+                            "moving_mean_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "center": true,
+                            "epsilon": 0.001,
+                            "trainable": true,
+                            "moving_variance_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "beta_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "gamma_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "gamma_regularizer": null,
+                            "gamma_constraint": null,
+                            "axis": -1,
+                            "beta_regularizer": null,
+                            "momentum": 0.99,
+                            "name": "batch_normalization_4"
+                        },
+                        "name": "batch_normalization_4"
+                    },
+                    {
+                        "class_name": "LeakyReLU",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "batch_normalization_4",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "alpha": 0.10000000149011612,
+                            "trainable": true,
+                            "name": "leaky_re_lu_4"
+                        },
+                        "name": "leaky_re_lu_4"
+                    },
+                    {
+                        "class_name": "MaxPooling2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "leaky_re_lu_4",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "name": "max_pooling2d_4",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "pool_size": [
+                                2,
+                                2
+                            ],
+                            "padding": "same",
+                            "strides": [
+                                2,
+                                2
+                            ]
+                        },
+                        "name": "max_pooling2d_4"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "max_pooling2d_4",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_5",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 256,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": false,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                3,
+                                3
+                            ]
+                        },
+                        "name": "conv2d_5"
+                    },
+                    {
+                        "class_name": "BatchNormalization",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "conv2d_5",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "beta_constraint": null,
+                            "scale": true,
+                            "moving_mean_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "center": true,
+                            "epsilon": 0.001,
+                            "trainable": true,
+                            "moving_variance_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "beta_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "gamma_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "gamma_regularizer": null,
+                            "gamma_constraint": null,
+                            "axis": -1,
+                            "beta_regularizer": null,
+                            "momentum": 0.99,
+                            "name": "batch_normalization_5"
+                        },
+                        "name": "batch_normalization_5"
+                    },
+                    {
+                        "class_name": "LeakyReLU",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "batch_normalization_5",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "alpha": 0.10000000149011612,
+                            "trainable": true,
+                            "name": "leaky_re_lu_5"
+                        },
+                        "name": "leaky_re_lu_5"
+                    },
+                    {
+                        "class_name": "MaxPooling2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "leaky_re_lu_5",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "name": "max_pooling2d_5",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "pool_size": [
+                                2,
+                                2
+                            ],
+                            "padding": "same",
+                            "strides": [
+                                2,
+                                2
+                            ]
+                        },
+                        "name": "max_pooling2d_5"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "max_pooling2d_5",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_6",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 512,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": false,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                3,
+                                3
+                            ]
+                        },
+                        "name": "conv2d_6"
+                    },
+                    {
+                        "class_name": "BatchNormalization",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "conv2d_6",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "beta_constraint": null,
+                            "scale": true,
+                            "moving_mean_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "center": true,
+                            "epsilon": 0.001,
+                            "trainable": true,
+                            "moving_variance_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "beta_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "gamma_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "gamma_regularizer": null,
+                            "gamma_constraint": null,
+                            "axis": -1,
+                            "beta_regularizer": null,
+                            "momentum": 0.99,
+                            "name": "batch_normalization_6"
+                        },
+                        "name": "batch_normalization_6"
+                    },
+                    {
+                        "class_name": "LeakyReLU",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "batch_normalization_6",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "alpha": 0.10000000149011612,
+                            "trainable": true,
+                            "name": "leaky_re_lu_6"
+                        },
+                        "name": "leaky_re_lu_6"
+                    },
+                    {
+                        "class_name": "MaxPooling2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "leaky_re_lu_6",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "name": "max_pooling2d_6",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "pool_size": [
+                                2,
+                                2
+                            ],
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ]
+                        },
+                        "name": "max_pooling2d_6"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "max_pooling2d_6",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_7",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 1024,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": false,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                3,
+                                3
+                            ]
+                        },
+                        "name": "conv2d_7"
+                    },
+                    {
+                        "class_name": "BatchNormalization",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "conv2d_7",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "beta_constraint": null,
+                            "scale": true,
+                            "moving_mean_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "center": true,
+                            "epsilon": 0.001,
+                            "trainable": true,
+                            "moving_variance_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "beta_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "gamma_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "gamma_regularizer": null,
+                            "gamma_constraint": null,
+                            "axis": -1,
+                            "beta_regularizer": null,
+                            "momentum": 0.99,
+                            "name": "batch_normalization_7"
+                        },
+                        "name": "batch_normalization_7"
+                    },
+                    {
+                        "class_name": "LeakyReLU",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "batch_normalization_7",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "alpha": 0.10000000149011612,
+                            "trainable": true,
+                            "name": "leaky_re_lu_7"
+                        },
+                        "name": "leaky_re_lu_7"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "leaky_re_lu_7",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_8",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 512,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": false,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                3,
+                                3
+                            ]
+                        },
+                        "name": "conv2d_8"
+                    },
+                    {
+                        "class_name": "BatchNormalization",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "conv2d_8",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "beta_constraint": null,
+                            "scale": true,
+                            "moving_mean_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "center": true,
+                            "epsilon": 0.001,
+                            "trainable": true,
+                            "moving_variance_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "beta_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "gamma_initializer": {
+                                "class_name": "Ones",
+                                "config": {}
+                            },
+                            "gamma_regularizer": null,
+                            "gamma_constraint": null,
+                            "axis": -1,
+                            "beta_regularizer": null,
+                            "momentum": 0.99,
+                            "name": "batch_normalization_8"
+                        },
+                        "name": "batch_normalization_8"
+                    },
+                    {
+                        "class_name": "LeakyReLU",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "batch_normalization_8",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "alpha": 0.10000000149011612,
+                            "trainable": true,
+                            "name": "leaky_re_lu_8"
+                        },
+                        "name": "leaky_re_lu_8"
+                    },
+                    {
+                        "class_name": "Conv2D",
+                        "inbound_nodes": [
+                            [
+                                [
+                                    "leaky_re_lu_8",
+                                    0,
+                                    0,
+                                    {}
+                                ]
+                            ]
+                        ],
+                        "config": {
+                            "kernel_constraint": null,
+                            "kernel_initializer": {
+                                "class_name": "VarianceScaling",
+                                "config": {
+                                    "distribution": "uniform",
+                                    "scale": 1.0,
+                                    "seed": null,
+                                    "mode": "fan_avg"
+                                }
+                            },
+                            "name": "conv2d_9",
+                            "bias_regularizer": null,
+                            "bias_constraint": null,
+                            "activation": "linear",
+                            "trainable": true,
+                            "data_format": "channels_last",
+                            "padding": "same",
+                            "strides": [
+                                1,
+                                1
+                            ],
+                            "dilation_rate": [
+                                1,
+                                1
+                            ],
+                            "kernel_regularizer": {
+                                "class_name": "L1L2",
+                                "config": {
+                                    "l2": 0.0005000000237487257,
+                                    "l1": 0.0
+                                }
+                            },
+                            "filters": 425,
+                            "bias_initializer": {
+                                "class_name": "Zeros",
+                                "config": {}
+                            },
+                            "use_bias": true,
+                            "activity_regularizer": null,
+                            "kernel_size": [
+                                1,
+                                1
+                            ]
+                        },
+                        "name": "conv2d_9"
+                    }
+                ],
+                "output_layers": [
+                    [
+                        "conv2d_9",
+                        0,
+                        0
+                    ]
+                ],
+                "name": "model_1",
+                "input_layers": [
+                    [
+                        "input_1",
+                        0,
+                        0
+                    ]
+                ]
+            }
+        },
+        "backend": "tensorflow"
+    },
+    "weightsManifest": [
+        {
+            "paths": [
+                "group1-shard1of3.bin",
+                "group1-shard2of3.bin",
+                "group1-shard3of3.bin"
+            ],
+            "weights": [
+                {
+                    "name": "ConstantFolding/PartitionedCall/onnx_tf_prefix_/model.22/Div_1_recip",
+                    "shape": [],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_77",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_24",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_87",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_29",
+                    "shape": [
+                        3
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_19",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_48",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_78",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_86",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_17",
+                    "shape": [
+                        3
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "unknown_140",
+                    "shape": [
+                        1,
+                        2,
+                        8400
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_65",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_19",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_77",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_22",
+                    "shape": [
+                        3
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_66",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_76",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_16",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_40",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_78",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "unknown_135",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Where_3",
+                    "shape": [
+                        0,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_43",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/GatherV2_3",
+                    "shape": [
+                        0
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_21",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.22/dfl/Transpose/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/concat_63",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/concat_64",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_201/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_63",
+                    "shape": [
+                        1,
+                        1,
+                        16,
+                        1
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_202/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "unknown_137",
+                    "shape": [
+                        3
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Where_4",
+                    "shape": [
+                        0,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_44",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/GatherV2_4",
+                    "shape": [
+                        0
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_22",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_73",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_23",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_85",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_28",
+                    "shape": [
+                        3
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_18",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_46",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_74",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_84",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_16",
+                    "shape": [
+                        3
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.22/Concat_4/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "unknown_142",
+                    "shape": [
+                        1,
+                        8400
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/Const_48",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_119/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_36",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_80",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_120/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_50",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_125/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_38",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_84",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_126/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_134/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_41",
+                    "shape": [
+                        1,
+                        1,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_90",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_135/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_49",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_122/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_37",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_82",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_123/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_51",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_128/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_39",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_86",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_129/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_137/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_42",
+                    "shape": [
+                        1,
+                        1,
+                        64,
+                        9
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_92",
+                    "shape": [
+                        9
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_138/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.22/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Where",
+                    "shape": [
+                        0,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_32",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/GatherV2",
+                    "shape": [
+                        0
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_14",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_60",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_152/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_47",
+                    "shape": [
+                        3,
+                        3,
+                        128,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_103",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_153/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_62",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_158/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_49",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_107",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_159/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_167/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_52",
+                    "shape": [
+                        1,
+                        1,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_113",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_168/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_61",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_155/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_48",
+                    "shape": [
+                        3,
+                        3,
+                        128,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_105",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_156/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_63",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_161/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_50",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_109",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_162/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_170/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_53",
+                    "shape": [
+                        1,
+                        1,
+                        64,
+                        9
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_115",
+                    "shape": [
+                        9
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_171/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.22/Concat_1/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Where_1",
+                    "shape": [
+                        0,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_37",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/GatherV2_1",
+                    "shape": [
+                        0
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_17",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_71",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_182/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_57",
+                    "shape": [
+                        3,
+                        3,
+                        256,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_123",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_183/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_73",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_188/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_59",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_127",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_189/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_194/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_61",
+                    "shape": [
+                        1,
+                        1,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_131",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_195/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_57",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_15",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_65",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_16",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_14",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_34",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_58",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_64",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_14",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_49",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_12",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_53",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_12",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_12",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_29",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_50",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_52",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_12",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_41",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_10",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_42",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_10",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_10",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_25",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_42",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_41",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_10",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_101/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_23",
+                    "shape": [
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_102/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.14/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_104/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_31",
+                    "shape": [
+                        1,
+                        1,
+                        192,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_70",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_105/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_45",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_11",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_44",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_11",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_11",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_27",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_46",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_43",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_11",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_45",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_107/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_32",
+                    "shape": [
+                        3,
+                        3,
+                        32,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_72",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_108/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_46",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_110/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_33",
+                    "shape": [
+                        3,
+                        3,
+                        32,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_74",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_111/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.15/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_113/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_34",
+                    "shape": [
+                        1,
+                        1,
+                        96,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_76",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_114/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_47",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_116/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_35",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_78",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_117/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_33",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_8",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_35",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_8",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_8",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_19",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_34",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_34",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_8",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_87/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_17",
+                    "shape": [
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_88/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.11/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_90/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_27",
+                    "shape": [
+                        1,
+                        1,
+                        384,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_62",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_91/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_37",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_9",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_37",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_9",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_9",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_21",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_38",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_36",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_9",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_38",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_93/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_28",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_64",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_94/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_39",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_96/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_29",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_66",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_97/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.12/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_99/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_30",
+                    "shape": [
+                        1,
+                        1,
+                        192,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_68",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_100/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.17/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_131/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_40",
+                    "shape": [
+                        1,
+                        1,
+                        192,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_88",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_132/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_53",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_13",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_55",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_13",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_13",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_31",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_54",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_54",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_13",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_56",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_140/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_43",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_94",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_141/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_58",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_143/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_44",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_97",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_144/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.18/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_146/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_45",
+                    "shape": [
+                        1,
+                        1,
+                        192,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_99",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_147/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_59",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_149/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_46",
+                    "shape": [
+                        3,
+                        3,
+                        128,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_101",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_150/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_79/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_81/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_25",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_6",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_28",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_6",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_6",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_13",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_26",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_27",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_6",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_17",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_4",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_19",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_4",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_4",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_9",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_18",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_18",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_4",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_9",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_2",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_10",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_2",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_2",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_5",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_10",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_9",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_2",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_1",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_3",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_1",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_2",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_2",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_1/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split",
+                    "shape": [
+                        3,
+                        3,
+                        3,
+                        16
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_0",
+                    "shape": [
+                        16
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_2/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_1",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_4/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_1",
+                    "shape": [
+                        3,
+                        3,
+                        16,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_2",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_5/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_7/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_2",
+                    "shape": [
+                        1,
+                        1,
+                        32,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_4",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_8/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_5",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_1",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_5",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_1",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_1",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_3",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_6",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_4",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_1",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_6",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_10/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_3",
+                    "shape": [
+                        3,
+                        3,
+                        16,
+                        16
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_10",
+                    "shape": [
+                        16
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_11/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_7",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_13/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_4",
+                    "shape": [
+                        3,
+                        3,
+                        16,
+                        16
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_12",
+                    "shape": [
+                        16
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_14/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.2/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_16/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_5",
+                    "shape": [
+                        1,
+                        1,
+                        48,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_14",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_17/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_8",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_19/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_6",
+                    "shape": [
+                        3,
+                        3,
+                        32,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_16",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_20/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_22/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_7",
+                    "shape": [
+                        1,
+                        1,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_18",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_23/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_13",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_3",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_12",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_3",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_3",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_7",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_14",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_11",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_3",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_13",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_25/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_8",
+                    "shape": [
+                        3,
+                        3,
+                        32,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_21",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_26/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_14",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_28/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_9",
+                    "shape": [
+                        3,
+                        3,
+                        32,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_23",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_29/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_15",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_31/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_10",
+                    "shape": [
+                        3,
+                        3,
+                        32,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_25",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_32/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_16",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_34/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_11",
+                    "shape": [
+                        3,
+                        3,
+                        32,
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_27",
+                    "shape": [
+                        32
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_35/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.4/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_37/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_12",
+                    "shape": [
+                        1,
+                        1,
+                        128,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_29",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_38/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_17",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_40/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_13",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_31",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_41/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_43/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_14",
+                    "shape": [
+                        1,
+                        1,
+                        128,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_33",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_44/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_21",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_5",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_21",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_5",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_5",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_11",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_22",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_20",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_5",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_22",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_46/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_15",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_36",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_47/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_23",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_49/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_16",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_38",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_50/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_24",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_52/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_17",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_40",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_53/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_25",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_55/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_18",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_42",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_56/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.6/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_58/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_19",
+                    "shape": [
+                        1,
+                        1,
+                        256,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_44",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_59/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_26",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_61/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_20",
+                    "shape": [
+                        3,
+                        3,
+                        128,
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_46",
+                    "shape": [
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_62/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_64/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_21",
+                    "shape": [
+                        1,
+                        1,
+                        256,
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_48",
+                    "shape": [
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_65/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_29",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_7",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_30",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_7",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_7",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_15",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_30",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_29",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_7",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_31",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_67/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_22",
+                    "shape": [
+                        3,
+                        3,
+                        128,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_51",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_68/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_32",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_70/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_23",
+                    "shape": [
+                        3,
+                        3,
+                        128,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_53",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_71/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.8/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_73/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_24",
+                    "shape": [
+                        1,
+                        1,
+                        384,
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_55",
+                    "shape": [
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_74/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_76/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_25",
+                    "shape": [
+                        1,
+                        1,
+                        256,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_57",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_77/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_78/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_83/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.9/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_85/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_26",
+                    "shape": [
+                        1,
+                        1,
+                        512,
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_59",
+                    "shape": [
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_86/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.20/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_164/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_51",
+                    "shape": [
+                        1,
+                        1,
+                        384,
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_111",
+                    "shape": [
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_165/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_61",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_16",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_67",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_17",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_15",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_36",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_62",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_66",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ones_15",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_68",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_173/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_54",
+                    "shape": [
+                        3,
+                        3,
+                        128,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_117",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_174/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_70",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_176/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_55",
+                    "shape": [
+                        3,
+                        3,
+                        128,
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_119",
+                    "shape": [
+                        128
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_177/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.21/Concat/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_179/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_56",
+                    "shape": [
+                        1,
+                        1,
+                        384,
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_121",
+                    "shape": [
+                        256
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_180/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_72",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_185/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_58",
+                    "shape": [
+                        3,
+                        3,
+                        256,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_125",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_186/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_74",
+                    "shape": [
+                        4,
+                        2
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_191/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_60",
+                    "shape": [
+                        3,
+                        3,
+                        64,
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_129",
+                    "shape": [
+                        64
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_192/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_197/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/split_62",
+                    "shape": [
+                        1,
+                        1,
+                        64,
+                        9
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "unknown_133",
+                    "shape": [
+                        9
+                    ],
+                    "dtype": "float32"
+                },
+                {
+                    "name": "PartitionedCall/transpose_198/perm",
+                    "shape": [
+                        4
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.22/Concat_2/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "unknown_95",
+                    "shape": [
+                        3
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Where_2",
+                    "shape": [
+                        0,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_38",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/GatherV2_2",
+                    "shape": [
+                        0
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_18",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.22/Concat_3/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_69",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/zeros_20",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_80",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Shape_23",
+                    "shape": [
+                        3
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/SelectV2_70",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_79",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/ExpandDims_17",
+                    "shape": [
+                        1,
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Cast_42",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "unknown_5",
+                    "shape": [
+                        1
+                    ],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/Const_81",
+                    "shape": [],
+                    "dtype": "int32"
+                },
+                {
+                    "name": "PartitionedCall/onnx_tf_prefix_/model.22/Concat_5/axis",
+                    "shape": [],
+                    "dtype": "int32"
+                }
+            ]
+        }
+    ]
+}
